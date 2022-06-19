@@ -1,0 +1,31 @@
+html, body{
+    width: 100%;
+    font-family: Varela Round, sans-serif;
+}
+
+/* */
+.gravity {
+    justify-content: center;
+    align-items: center;
+}
+
+.flexBoxHorizontal {
+    display: flex;
+}
+
+.flexBoxVertical {
+    display: flex;
+    flex-direction: column;
+}
+
+/*This main tag will determine the main frame of the calculator*/
+main {
+    width: 250px;
+    height: 250px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.displayScreen {
+    width: inherit;
+}
