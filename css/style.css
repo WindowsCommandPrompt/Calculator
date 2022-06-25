@@ -1,9 +1,17 @@
 html, body{
     width: 100%;
+    height: 100%;
     font-family: Varela Round, sans-serif;
 }
 
-/* */
+/*CSS CONSTANT RULESETS*/
+:root{
+    --elementWidth: 0px;
+    --elementHeight: 0px;
+    --targetHeight: 0px;
+    --n: 0;
+}
+
 .gravity {
     justify-content: center;
     align-items: center;
@@ -18,14 +26,97 @@ html, body{
     flex-direction: column;
 }
 
+.matchParentHeight {
+    height: 100%;
+}
+
+.matchParentWidth {
+    width: 100%;
+}
+
+.curvedEdgesSmall {
+    border-radius: 5px;
+}
+
+.curvedEdgesMedium {
+    border-radius: 15px;
+}
+
+.curvedEdgesHeavy {
+    border-radius: 25px;
+}
+
+.circle {
+    border-radius: 100%;
+}
+
+.borderVisible {
+    border-style: solid;
+}
+
+.borderInvisible {
+    border-style: none;
+}
+
+.noTextStyle {
+    text-decoration: none;
+}
+
+.textUnderline {
+    text-decoration: underline;
+}
+
+.detect {
+    background-color: red;
+}
+
+.fillPixel {
+    background-color: black;
+}
+
 /*This main tag will determine the main frame of the calculator*/
 main {
-    width: 250px;
-    height: 250px;
+    width: 850px;
+    height: 550px;
     border-style: solid;
     border-width: 1px;
 }
 
+/*Main frame of the calculator*/
 .displayScreen {
-    width: inherit;
+    background: linear-gradient(180deg, lightblue, white, lightblue);
+    height: 150px;
 }
+
+.numDisplay {
+    height: 50%;
+}
+
+.individualCell{
+    width: calc(100% / 15);
+}
+
+.individualCellInternalPixelRow {
+    height: calc(100% / 10);
+}
+
+.individualPixel {
+    width: calc(100% / 10);
+}
+
+#keyPad {
+    height: calc(100% - 150px);
+}
+
+/*Number of rows to store the calculator buttons*/
+.buttonRows {
+    width: calc(100% / 8);
+}
+
+.numKey {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+}
+
+
