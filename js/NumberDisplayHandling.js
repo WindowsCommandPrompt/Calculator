@@ -23,12 +23,25 @@ $(document).ready(() => {
     form7 = () => { } //this method will display a '7'
     form8 = () => { } //this method will display a '8'
     form9 = () => { } //this method will display a '9'
+    isVacant = () => {
+        var internalContents = new Array();
+        //individualCell (mainCell) -> individualCellInternalPixelRow(rows) -> individualPixel (each pixel level)
+        for (let cell in $("div.displayScreen")) {
+            for (let row in $("div.displayScreen").children().eq(cell)) {
+                for (let pixel in $("div.displayScreen").children().eq(cell).children().eq(row)) {
+                    internalContents.push($("div.displayScreen").children().eq(cell).children().eq(row).children().eq(pixel).attr("class"));
+                }
+            }
+        }
+        return internalContents;
+    }
+    console.log(isVacant());
     //Create the relevant event listeners
     //console.log($("div#keyPad").children().eq(2).children().eq(2).html())
     for (let key in $("div.numKey")){
         $("div.numKey").eq(key).on("click", () => {
+            is
             if ($("div.numKey").eq(key).html() === "1"){
-
             }
             else if ($("div.numKey").eq(key).html() === "2"){
             }
