@@ -13,24 +13,39 @@
 //Pixels required to display a '-' in each of the cells ->
 //Pixels required to display a '÷' in each of the cells ->
 
-
-form1 = () => { } //this method will display a '1'
-form2 = () => { } //this method will display a '2'
-form3 = () => { } //this method will display a '3'
-form4 = () => { } //this method will display a '4'
-form5 = () => { } //this method will display a '5'
-form6 = () => { } //this method will display a '6'
-form7 = () => { } //this method will display a '7'
-form8 = () => { } //this method will display a '8'
-form9 = () => { } //this method will display a '9'
-
-console.log("This javascript is not sleeping!")
-
 $(document).ready(() => {
+    form1 = () => { } //this method will display a '1'
+    form2 = () => { } //this method will display a '2'
+    form3 = () => { } //this method will display a '3'
+    form4 = () => { } //this method will display a '4'
+    form5 = () => { } //this method will display a '5'
+    form6 = () => { } //this method will display a '6'
+    form7 = () => { } //this method will display a '7'
+    form8 = () => { } //this method will display a '8'
+    form9 = () => { } //this method will display a '9'
     //Create the relevant event listeners
-    for (let main in $("div#keyPad")){
-        for (let internal in $("div#keyPad").eq(main)){
-            console.log($("div#keyPad").eq(main).eq(internal).html());
-        }
+    //console.log($("div#keyPad").children().eq(2).children().eq(2).html())
+    for (let key in $("div.numKey")){
+        $("div.numKey").eq(key).on("click", () => {
+            if ($("div.numKey").eq(key).html() === "1"){
+
+            }
+            else if ($("div.numKey").eq(key).html() === "2"){
+            }
+            else if ($("div.numKey").eq(key).html() === "3"){
+            }
+            else if ($("div.numKey").eq(key).html() === "4"){
+            }
+            else if ($("div.numKey").eq(key).html() === "5"){
+            }
+            else if ($("div.numKey").eq(key).html() === "6"){
+            }
+            else if ($("div.numKey").eq(key).html() === "7"){
+            }
+            else if ($("div.numKey").eq(key).html() === "8"){
+            }
+            else if ($("div.numKey").eq(key).html() === "9"){
+            }
+        });
     }
 });
