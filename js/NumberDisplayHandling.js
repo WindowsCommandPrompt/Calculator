@@ -97,7 +97,7 @@ $(document).ready(() => {
                 //this function does not accept cellID as a string, boolean, undefined, function, objects, array
                 console.error(
                     `Function isVacant only accepts 'number' as parameter, but ${typeof(cellID)} was given.\n
-                     Parameter given: ${(Convert.toNumberIsSuccessful(cellID) === true ? `\"${cellID}\" as a string.\nDid you mean ${cellID}?`: '')}`
+                     Parameter given: ${(Convert.toNumberIsSuccessful(cellID) === true ? `\"${cellID}\" as a string.\nDid you mean ${cellID} as a number? Remove all quotation marks surrounding your parameter for the function`: '')}`
                 );
                 return false;
             }
@@ -119,6 +119,37 @@ $(document).ready(() => {
             } catch (error) {
                 return false;
             }
+        },
+        "toBooleanIsSuccessful": (cellID) => {
+            //try converting the string to a boolean
+        },
+        "rawStringToNumber": (cellID) => {
+            return (
+                        cellID.toString().includes("ON") ||
+                        cellID.toString().includes("NE") ||
+                        cellID.toString().includes("on") ||
+                        cellID.toString().includes("ne") ||
+                        cellID.toString().includes("On") ||
+                        cellID.toString().includes("nE") ||
+                        cellID.toString().includes("oN")
+                            ?
+                                true
+                            :
+                                // Check for two
+                                (
+                                    cellID.toString().includes("TW") ||
+                                    cellID.toString().includes("WO") ||
+                                    cellID.toString().includes("on") ||
+                                    cellID.toString().includes("ne") ||
+                                    cellID.toString().includes("On") ||
+                                    cellID.toString().includes("nE") ||
+                                    cellID.toString().includes("oN")
+                                    ?
+                                        ""
+                                    :
+                                        ""
+                                )
+                   )
         }
     }
 
