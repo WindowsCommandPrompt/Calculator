@@ -194,9 +194,14 @@ $(document).ready(() => {
                 //Check if the cell is vacant within the thing (Start with the cell on the extreme right)
                 console.log("The user has pressed on 1");
                 for (let i = 0; i < ($("div.individualCell").length - 1); i++){
+                    console.debug("For Loop Entry");
                     if (Cell.isVacant(i)){
                         Cell.form1(i);
                         break;
+                    }
+                    else {
+                        //If the cell is not vacant then move on to the next cell to the right
+
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "2") {
@@ -215,6 +220,9 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.form3(i);
                         break;
+                    }
+                    else {
+                        continue;
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "4") {
