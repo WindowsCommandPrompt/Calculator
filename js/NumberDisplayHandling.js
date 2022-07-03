@@ -194,12 +194,14 @@ $(document).ready(() => {
                 //Check if the cell is vacant within the thing (Start with the cell on the extreme right)
                 console.log("The user has pressed on 1");
                 for (let i = 0; i < ($("div.individualCell").length - 1); i++){
-                    console.debug("For Loop Entry");
+                    console.log("For Loop Entry");
                     if (Cell.isVacant(i)){
+                        console.log(i);
                         Cell.form1(i);
                         break;
                     }
                     else {
+                        //!Cell.isVacant(i)
                         //If the cell is not vacant then move on to the next cell to the right
 
                     }
@@ -212,6 +214,10 @@ $(document).ready(() => {
                         Cell.form2(i);
                         break;
                     }
+                    else{
+                        //!Cell.isVacant(i)
+
+                    }
                 }
             } else if ($("div.numKey").eq(key).html() === "3") {
                 //Check if the cell is vacant
@@ -222,7 +228,7 @@ $(document).ready(() => {
                         break;
                     }
                     else {
-                        continue;
+
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "4") {
@@ -233,6 +239,9 @@ $(document).ready(() => {
                         Cell.form4(i);
                         break;
                     }
+                    else {
+
+                    }
                 }
             } else if ($("div.numKey").eq(key).html() === "5") {
                 //Check if the cell is vacant
@@ -241,6 +250,9 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.form5(i);
                         break;
+                    }
+                    else {
+
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "6") {
@@ -251,6 +263,9 @@ $(document).ready(() => {
                         Cell.form6(i);
                         break;
                     }
+                    else {
+
+                    }
                 }
             } else if ($("div.numKey").eq(key).html() === "7") {
                 //Check if the cell is vacant
@@ -259,6 +274,9 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.form7(i);
                         break;
+                    }
+                    else {
+
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "8") {
@@ -269,6 +287,9 @@ $(document).ready(() => {
                         Cell.form8(i);
                         break;
                     }
+                    else {
+
+                    }
                 }
             } else if ($("div.numKey").eq(key).html() ===  "9") {
                 //Check if the cell is vacant
@@ -277,6 +298,9 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.form9(i);
                         break;
+                    }
+                    else {
+
                     }
                 }
             }
