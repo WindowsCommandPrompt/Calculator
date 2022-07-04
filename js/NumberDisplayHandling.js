@@ -12,12 +12,16 @@
 //Pixels required to display a '+' in each of the cells -> 34, 44, 51, 52, 53, 54, 55, 56, 57, 58, 64, 74
 //Pixels required to display a '-' in each of the cells -> 51, 52, 53, 54, 55, 56, 57, 58
 //Pixels required to display a '÷' in each of the cells -> 34, 35, 51, 52, 53, 54, 55, 56, 57, 58, 74, 75
+//Pixels required to display a '(' in each of the cells ->
+//Pixels required to display a ')' in each of the cells ->
+//Pixels required to display a '%' in each of the cells ->
 
 $(document).ready(() => {
     var Cell = {
         //WARNING: DO NOT REMOVE THE VALUE: individualPixel FROM THE ATTRIBUTE 'CLASS'!
         "form0": (cellIndex) => {
             //this method will display a '0'
+            let arr = new Array();
         },
         "form1": (cellIndex) => {
             //this method will display a '1'
@@ -118,9 +122,12 @@ $(document).ready(() => {
                     if (cellID <= $("div.individualCell").length - 1) {
                         for (let row in $("div.individualCell").eq(cellID).children()) {
                             for (let pixel in $("div.individualCell").eq(cellID).children().eq(row).children()) {
+                                console.log(`Cell ${cellID}: ${$("div.individualCell").eq(cellID).children().eq(row).children().eq(pixel).attr("class")}`);
                                 if ($("div.individualCell").eq(cellID).children().eq(row).children().eq(pixel).attr("class").includes("fillPixel")) {
                                     return false;
-                                } else {
+                                }
+                                else {
+                                    console.log(`Cell ${cellID} is blank!`);
                                     return true;
                                 }
                             }
@@ -180,36 +187,42 @@ $(document).ready(() => {
                         cellID.toString().includes("ne") ||
                         cellID.toString().includes("On") ||
                         cellID.toString().includes("nE") ||
-                        cellID.toString().includes("oN")
-                            ?
-                                1
-                            :
-                                // Check for two
-                                (
-                                    cellID.toString().includes("TW") ||
-                                    cellID.toString().includes("WO") ||
-                                    cellID.toString().includes("tw") ||
-                                    cellID.toString().includes("wo") ||
-                                    cellID.toString().includes("Tw") ||
-                                    cellID.toString().includes("wO") ||
-                                    cellID.toString().includes("tW")
-                                    ?
-                                        2
-                                    :
-                                        (
-                                            cellID.toString().includes("TW") ||
-                                            cellID.toString().includes("WO") ||
-                                            cellID.toString().includes("tw") ||
-                                            cellID.toString().includes("wo") ||
-                                            cellID.toString().includes("Tw") ||
-                                            cellID.toString().includes("wO") ||
-                                            cellID.toString().includes("tW")
-                                            ?
-                                                3
-                                            :
-                                                ""
-                                        )
-                                )
+                        cellID.toString().includes("oN") ||
+                        cellID.toString().startsWith("o") ||
+                        cellID.toString().startsWith("O")
+                        ?
+                            1
+                        :
+                            // Check for two
+                            (
+                                cellID.toString().includes("TW") ||
+                                cellID.toString().includes("WO") ||
+                                cellID.toString().includes("tw") ||
+                                cellID.toString().includes("wo") ||
+                                cellID.toString().includes("Tw") ||
+                                cellID.toString().includes("wO") ||
+                                cellID.toString().includes("tW") ||
+                                cellID.toString().startsWith("t") ||
+                                cellID.toString().startsWith("T")
+                                ?
+                                    2
+                                :
+                                    (
+                                        cellID.toString().includes("THREE") ||
+                                        cellID.toString().includes("three") ||
+                                        cellID.toString().startsWith("T") ||
+                                        cellID.toString().startsWith("t") ||
+                                        cellID.toString().includes("TH") ||
+                                        cellID.toString().includes("th") ||
+                                        cellID.toString().includes("tH") ||
+                                        cellID.toString().includes("Thr") ||
+                                        cellID.toString().includes("thr")
+                                        ?
+                                            3
+                                        :
+                                            ""
+                                    )
+                            )
                    );
         }
     }
@@ -246,20 +259,23 @@ $(document).ready(() => {
 
     //Create the relevant event listeners
     //console.log($("div#keyPad").children().eq(2).children().eq(2).html())
-    for (let key in $("div.numKey")){
+    /*
+    Check if the current cell contains a number, if the cell contains a number, move to the next cell and display the number within the cell
+     */
+    for (let key in $("div.numKey")){ //loop through $("div.numKey")
         $("div.numKey").eq(key).on("click", () => {
             if ($("div.numKey").eq(key).html() === "1") {
                 //Check if the cell is vacant within the thing (Start with the cell on the extreme right)
                 console.log("The user has pressed on 1");
                 Log.details($("div.numKey").eq(key).html());
-                for (let i = 0; i < ($("div.individualCell").length - 1); i++){
-                    if (Cell.isVacant(i)){
-                        console.log(i);
-                        Cell.form1(i); //does not change 'index.html'
+                for (let i = 0; i < $("div.individualCell").length; i++){
+                    if (Cell.isVacant(i)) {
+                        Cell.form1(i);
                         break;
                     }
                 }
-            } else if ($("div.numKey").eq(key).html() === "2") {
+            }
+            if ($("div.numKey").eq(key).html() === "2") {
                 //Check if the cell is vacant within the display screen
                 console.log("The user has pressed on 2");
                 Log.details($("div.numKey").eq(key).html());
@@ -269,7 +285,8 @@ $(document).ready(() => {
                         break;
                     }
                 }
-            } else if ($("div.numKey").eq(key).html() === "3") {
+            }
+            else if ($("div.numKey").eq(key).html() === "3") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 3");
                 Log.details($("div.numKey").eq(key).html());
@@ -278,11 +295,9 @@ $(document).ready(() => {
                         Cell.form3(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
-            } else if ($("div.numKey").eq(key).html() === "4") {
+            }
+            else if ($("div.numKey").eq(key).html() === "4") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 4");
                 Log.details($("div.numKey").eq(key).html());
@@ -291,11 +306,9 @@ $(document).ready(() => {
                         Cell.form4(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
-            } else if ($("div.numKey").eq(key).html() === "5") {
+            }
+            else if ($("div.numKey").eq(key).html() === "5") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 5");
                 Log.details($("div.numKey").eq(key).html());
@@ -304,11 +317,9 @@ $(document).ready(() => {
                         Cell.form5(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
-            } else if ($("div.numKey").eq(key).html() === "6") {
+            }
+            else if ($("div.numKey").eq(key).html() === "6") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 6");
                 Log.details($("div.numKey").eq(key).html());
@@ -317,11 +328,9 @@ $(document).ready(() => {
                         Cell.form6(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
-            } else if ($("div.numKey").eq(key).html() === "7") {
+            }
+            else if ($("div.numKey").eq(key).html() === "7") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 7");
                 Log.details($("div.numKey").eq(key).html());
@@ -330,11 +339,9 @@ $(document).ready(() => {
                         Cell.form7(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
-            } else if ($("div.numKey").eq(key).html() === "8") {
+            }
+            else if ($("div.numKey").eq(key).html() === "8") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 8");
                 Log.details($("div.numKey").eq(key).html());
@@ -343,11 +350,9 @@ $(document).ready(() => {
                         Cell.form8(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
-            } else if ($("div.numKey").eq(key).html() ===  "9") {
+            }
+            else if ($("div.numKey").eq(key).html() ===  "9") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 9");
                 Log.details($("div.numKey").eq(key).html());
@@ -355,9 +360,6 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.form9(i);
                         break;
-                    }
-                    else {
-
                     }
                 }
             }
@@ -369,9 +371,6 @@ $(document).ready(() => {
                         Cell.formMulSymbol(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
             }
             else if ($("div.numKey").eq(key).html() === "-"){
@@ -381,9 +380,6 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.formSubSymbol(i);
                         break;
-                    }
-                    else {
-
                     }
                 }
             }
@@ -395,9 +391,6 @@ $(document).ready(() => {
                         Cell.formAddSymbol(i);
                         break;
                     }
-                    else {
-
-                    }
                 }
             }
             else if ($("div.numKey").eq(key).html() === "÷"){
@@ -407,9 +400,6 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.formDivSymbol(i);
                         break;
-                    }
-                    else {
-
                     }
                 }
             }
