@@ -235,6 +235,15 @@ $(document).ready(() => {
         }
     }
 
+    var Pointer = {
+        "moveLeft": () => {
+
+        },
+        "moveRight": () => {
+
+        }
+    }
+
     //Create the relevant event listeners
     //console.log($("div#keyPad").children().eq(2).children().eq(2).html())
     for (let key in $("div.numKey")){
@@ -244,16 +253,10 @@ $(document).ready(() => {
                 console.log("The user has pressed on 1");
                 Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1); i++){
-                    console.log("For Loop Entry");
                     if (Cell.isVacant(i)){
                         console.log(i);
-                        Cell.form1(i);
+                        Cell.form1(i); //does not change 'index.html'
                         break;
-                    }
-                    else {
-                        //!Cell.isVacant(i)
-                        //If the cell is not vacant then move on to the next cell to the right
-
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "2") {
@@ -264,10 +267,6 @@ $(document).ready(() => {
                     if (Cell.isVacant(i)){
                         Cell.form2(i);
                         break;
-                    }
-                    else{
-                        //!Cell.isVacant(i)
-
                     }
                 }
             } else if ($("div.numKey").eq(key).html() === "3") {
