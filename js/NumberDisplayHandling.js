@@ -9,7 +9,7 @@
 //Pixels required to display a '9' in each of the cells -> 3, 4, 5, 6, 7, 12, 18, 21, 29, 31, 39, 42, 48, 49, 53, 54, 55, 56, 57, 59, 69, 78, 87, 94, 95, 96
 //Pixels required to display a '0' in each of the cells ->
 //Pixels required to display a 'x' in each of the cells -> 33, 37, 44, 46, 55, 64, 66, 73, 77
-//Pixels required to display a '+' in each of the cells -> 51, 52, 53, 54, 55, 56, 57, 58
+//Pixels required to display a '+' in each of the cells -> 34, 44, 51, 52, 53, 54, 55, 56, 57, 58, 64, 74
 //Pixels required to display a '-' in each of the cells -> 51, 52, 53, 54, 55, 56, 57, 58
 //Pixels required to display a '÷' in each of the cells -> 34, 35, 51, 52, 53, 54, 55, 56, 57, 58, 74, 75
 
@@ -100,6 +100,13 @@ $(document).ready(() => {
         "formSubSymbol": (cellIndex) => {
             //this method will display a '-'
             let arr = new Array(51, 52, 53, 54, 55, 56, 57, 58);
+            for (let i in arr){
+                $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
+            }
+        },
+        "formAddSymbol": (cellIndex) => {
+            //this method will display a '+'
+            let arr = new Array(34, 44, 51, 52, 53, 54, 55, 56, 57, 58, 64, 74);
             for (let i in arr){
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
@@ -348,6 +355,58 @@ $(document).ready(() => {
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form9(i);
+                        break;
+                    }
+                    else {
+
+                    }
+                }
+            }
+            else if ($("div.numKey").eq(key).html() === "×"){
+                console.log("The user has pressed on ×");
+                Log.details($("div.numKey").eq(key).html());
+                for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
+                    if (Cell.isVacant(i)){
+                        Cell.formMulSymbol(i);
+                        break;
+                    }
+                    else {
+
+                    }
+                }
+            }
+            else if ($("div.numKey").eq(key).html() === "-"){
+                console.log("The user has pressed on -");
+                Log.details($("div.numKey").eq(key).html());
+                for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
+                    if (Cell.isVacant(i)){
+                        Cell.formSubSymbol(i);
+                        break;
+                    }
+                    else {
+
+                    }
+                }
+            }
+            else if ($("div.numKey").eq(key).html() === "+"){
+                console.log("The user has pressed on +");
+                Log.details($("div.numKey").eq(key).html());
+                for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
+                    if (Cell.isVacant(i)){
+                        Cell.formAddSymbol(i);
+                        break;
+                    }
+                    else {
+
+                    }
+                }
+            }
+            else if ($("div.numKey").eq(key).html() === "÷"){
+                console.log("The user has pressed on ÷");
+                Log.details($("div.numKey").eq(key).html());
+                for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
+                    if (Cell.isVacant(i)){
+                        Cell.formDivSymbol(i);
                         break;
                     }
                     else {
