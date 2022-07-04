@@ -8,69 +8,102 @@
 //Pixels required to display a '8' in each of the cells -> 3, 4, 5, 6, 7, 12, 18, 21, 29, 31, 39, 42, 48, 53, 54, 55, 56, 57, 62, 68, 71, 79, 82, 88, 93, 94, 95, 96, 97
 //Pixels required to display a '9' in each of the cells -> 3, 4, 5, 6, 7, 12, 18, 21, 29, 31, 39, 42, 48, 49, 53, 54, 55, 56, 57, 59, 69, 78, 87, 94, 95, 96
 //Pixels required to display a '0' in each of the cells ->
-//Pixels required to display a 'x' in each of the cells ->
-//Pixels required to display a '+' in each of the cells ->
-//Pixels required to display a '-' in each of the cells ->
-//Pixels required to display a '÷' in each of the cells ->
+//Pixels required to display a 'x' in each of the cells -> 33, 37, 44, 46, 55, 64, 66, 73, 77
+//Pixels required to display a '+' in each of the cells -> 51, 52, 53, 54, 55, 56, 57, 58
+//Pixels required to display a '-' in each of the cells -> 51, 52, 53, 54, 55, 56, 57, 58
+//Pixels required to display a '÷' in each of the cells -> 34, 35, 51, 52, 53, 54, 55, 56, 57, 58, 74, 75
 
 $(document).ready(() => {
     var Cell = {
         //WARNING: DO NOT REMOVE THE VALUE: individualPixel FROM THE ATTRIBUTE 'CLASS'!
+        "form0": (cellIndex) => {
+            //this method will display a '0'
+        },
         "form1": (cellIndex) => {
+            //this method will display a '1'
             let arr = new Array(5, 14, 15, 25, 35, 45, 55, 65, 75, 85, 93, 94, 95, 96, 97);
             console.log("Displaying \"1\" in the display screen");
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '1'
+        },
         "form2": (cellIndex) => {
+            //this method will display a '2'
             let arr = new Array(3, 4, 5, 6, 12, 17, 21, 28, 38, 47, 54, 55, 56, 63, 72, 81, 91, 92, 93, 94, 95, 96, 97, 98, 99);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '2'
+        },
         "form3": (cellIndex) => {
+            //this method will display a '3'
             let arr = new Array(3, 4, 5, 6, 12, 17, 21, 28, 38, 47, 54, 55, 56, 67, 71, 78, 82, 87, 93, 94, 95, 96);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '3'
+        },
         "form4": (cellIndex) => {
+            //this method will display a '4'
             let arr = new Array(7, 8, 16, 18, 25, 28, 34, 38, 43, 48, 52, 58, 61, 68, 71, 72, 73, 74, 75, 76, 77, 78, 79, 88, 98);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '4'
+        },
         "form5": (cellIndex) => {
+            //this method will display a '5'
             let arr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 21, 31, 33, 34, 35, 36, 37, 41, 42, 48, 59, 69, 71, 79, 82, 88, 93, 94, 95, 96, 97);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '5'
+        },
         "form6": (cellIndex) => {
+            //this method will display a '6'
             let arr = new Array(3, 4, 5, 6, 7, 8, 12, 19, 21, 31, 33, 34, 35, 36, 37, 41, 42, 48, 51, 59, 61, 69, 71, 79, 82, 88, 93, 94, 95, 96, 97);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '6'
+        },
         "form7": (cellIndex) => {
+            //this method will display a '7'
             let arr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 19, 29, 38, 48, 57, 66, 76, 85, 95);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '7'
+        },
         "form8": (cellIndex) => {
+            //this method will display a '8'
             let arr = new Array(3, 4, 5, 6, 7, 12, 18, 21, 29, 31, 39, 42, 48, 53, 54, 55, 56, 57, 62, 68, 71, 79, 82, 88, 93, 94, 95, 96, 97);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '8'
+        },
         "form9": (cellIndex) => {
+            //this method will display a '9'
             let arr = new Array(3, 4, 5, 6, 7, 12, 18, 21, 29, 31, 39, 42, 48, 49, 53, 54, 55, 56, 57, 59, 69, 78, 87, 94, 95, 96);
             for (let i in arr) {
                 $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
             }
-        }, //this method will display a '9'
+        },
+        "formMulSymbol": (cellIndex) => {
+            //this method will display a 'x'
+            let arr = new Array(33, 37, 44, 46, 55, 64, 66, 73, 77);
+            for (let i in arr){
+                $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
+            }
+        },
+        "formDivSymbol": (cellIndex) => {
+            //this method will display a '÷'
+            let arr = new Array(34, 35, 51, 52, 53, 54, 55, 56, 57, 58, 74, 75);
+            for (let i in arr){
+                $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
+            }
+        },
+        "formSubSymbol": (cellIndex) => {
+            //this method will display a '-'
+            let arr = new Array(51, 52, 53, 54, 55, 56, 57, 58);
+            for (let i in arr){
+                $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
+            }
+        },
         "isVacant": (cellID) => {
             //individualCell (mainCell) -> individualCellInternalPixelRow(rows) -> individualPixel (each pixel level)
             if (typeof(cellID) === "number") {
@@ -180,8 +213,17 @@ $(document).ready(() => {
         }
     }
 
+    let arr = new Array();
     var Log = {
-        "logDetails": () => {
+        //This method actually logs the calculation string
+        "details": (keyCode) => {
+            arr.push(keyCode);
+        },
+        //This method will list out the calculation string
+        "listDetails": () => {
+            return arr.join('');
+        },
+        "removeFromDetails": () => {
 
         }
     }
@@ -193,6 +235,7 @@ $(document).ready(() => {
             if ($("div.numKey").eq(key).html() === "1") {
                 //Check if the cell is vacant within the thing (Start with the cell on the extreme right)
                 console.log("The user has pressed on 1");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1); i++){
                     console.log("For Loop Entry");
                     if (Cell.isVacant(i)){
@@ -209,6 +252,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "2") {
                 //Check if the cell is vacant within the display screen
                 console.log("The user has pressed on 2");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1); i++){
                     if (Cell.isVacant(i)){
                         Cell.form2(i);
@@ -222,6 +266,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "3") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 3");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1); i++){
                     if (Cell.isVacant(i)){
                         Cell.form3(i);
@@ -234,6 +279,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "4") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 4");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form4(i);
@@ -246,6 +292,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "5") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 5");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form5(i);
@@ -258,6 +305,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "6") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 6");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form6(i);
@@ -270,6 +318,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "7") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 7");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form7(i);
@@ -282,6 +331,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() === "8") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 8");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form8(i);
@@ -294,6 +344,7 @@ $(document).ready(() => {
             } else if ($("div.numKey").eq(key).html() ===  "9") {
                 //Check if the cell is vacant
                 console.log("The user has pressed on 9");
+                Log.details($("div.numKey").eq(key).html());
                 for (let i = 0; i < ($("div.individualCell").length - 1) ; i++){
                     if (Cell.isVacant(i)){
                         Cell.form9(i);
@@ -303,6 +354,18 @@ $(document).ready(() => {
 
                     }
                 }
+            }
+            else if ($("div.numKey").eq(key).children().html() === "backspace"){
+
+            }
+            else if ($("div.numKey").eq(key).children().html() === "clear_all"){
+
+            }
+            else if ($("div.numKey").eq(key).children().html() === "memory"){
+
+            }
+            else if ($("div.numKey").eq(key).children().html() === "input"){
+                console.log(Log.listDetails());
             }
         });
     }
