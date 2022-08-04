@@ -159,14 +159,14 @@ $(document).ready(() => {
       }
     }, 
     "Pointer": {
-      "forward": () => {
-        
+      "forward": (cellID) => {
+        return cellID + 1; 
       }, 
       "backward": () => {
-        
+        return cellID - 1; 
       }, 
       "getCurrentPosition": () => {
-        
+        return cellID; 
       }
     }
   } 
@@ -182,7 +182,7 @@ $(document).ready(() => {
         console.log("The user has pressed on 1");
         Util.Log.details($("div.numKey").eq(key).html()); //Calculation string 
         for (let i = 0; i < $("div.individualCell").length; ++i){
-          //Check if there is already something in that cell
+          //Check for the target key within the map and see if the cell is occupied 
           Util.Log.displayUtil().forEach(key => {
             
           }); 
