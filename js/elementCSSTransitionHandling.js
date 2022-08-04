@@ -77,8 +77,51 @@ console.log(c);  //[1, 2, 3, 4, 5, 6]
 
 //console.log(jQuery("main").length);
 
-
-
+/*
+        "isVacant": (cellID) => {
+            //individualCell (mainCell) -> individualCellInternalPixelRow(rows) -> individualPixel (each pixel level)
+            if (typeof(cellID) === "number") {
+                if (!Value.isFloatingPoint(cellID)) {
+                    if (cellID <= $("div.individualCell").length - 1) {
+                        for (let row in $("div.individualCell").eq(cellID).children()) {
+                            for (let pixel in $("div.individualCell").eq(cellID).children().eq(row).children()) {
+                                console.log(`Cell ${cellID}: ${$("div.individualCell").eq(cellID).children().eq(row).children().eq(pixel).attr("class")}`);
+                                if ($("div.individualCell").eq(cellID).children().eq(row).children().eq(pixel).attr("class").includes("fillPixel")) {
+                                    return false;
+                                }
+                                else {
+                                    console.log(`Cell ${cellID} is blank!`);
+                                    return true;
+                                }
+                            }
+                        }
+                    } else {
+                        console.error(`Index out of range\nNum of pixels available: ${$("div.individualCell").length}\nHighestIndex: ${$("div.individualCell").length - 1}\nGiven: ${cellID}`)
+                        return false;
+                    }
+                }
+                else {
+                    //Give an error message where the cellID is not a whole number.
+                    console.error("");
+                    return false;
+                }
+            }
+            else {
+                //this function does not accept cellID as a string, boolean, undefined, function, objects, array
+                console.error(
+                    `Function isVacant only accepts 'number' as parameter, but ${typeof(cellID)} was given.\n
+                     Parameter given: ${(Convert.toNumberIsSuccessful(cellID) === true 
+                        ? `\"${cellID}\" as a string.\nDid you mean ${cellID} as a number? Remove all quotation marks surrounding your parameter for the function`
+                        : (Convert.checkRawStringResolvesToNumber(cellID) 
+                            ? "" 
+                            : ""
+                        ))}`
+                );
+                return false;
+            }
+            return false;
+        },
+*/
 
 
 
