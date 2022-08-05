@@ -117,15 +117,45 @@ $(document).ready(() => {
               $("div.individualCell").eq(cellIndex).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(0) : arr[i].toString().charAt(0))).children().eq(parseInt(arr[i].toString().length === 1 ? ("0" + arr[i].toString()).charAt(1) : arr[i].toString().charAt(1))).attr("class", "individualPixel fillPixel");
           }
       },
-      "delete": (cellID) => { //If there is a possible dead pixel within the array, we can just call this function to clear the entire cell
-          $("div.individualCell")
+      "delete": (cellIndex) => { //If there is a possible dead pixel within the array, we can just call this function to clear the entire cell
+        $("div.individualCell").eq(cellIndex).attr("individualPixel"); 
+        Util.Log.clearDetails(); 
       },
-      "replace": (cellID) => {
-
+      "replace": (cellIndex, newItem) => {
+        //clear that pixel first
+        $("div.individualCell").eq(cellIndex).attr("individualPixel"); 
+        if (newItem.toString() === "1"){
+          Util.Cell.form1(cellIndex); 
+        }
+        else if (newItem.toString() === "2"){
+          Util.Cell.form2(cellIndex); 
+        }
+        else if (newItem.toString() === "3"){
+          Util.Cell.form3(cellIndex); 
+        }
+        else if (newItem.toString() === "4"){
+          Util.Cell.form4(cellIndex); 
+        }
+        else if (newItem.toString() === "5"){
+          Util.Cell.form5(cellIndex); 
+        }
+        else if (newItem.toString() === "6"){
+          Util.Cell.form6(cellIndex); 
+        }
+        else if (newItem.toString() === "7"){
+          Util.Cell.form7(cellIndex); 
+        }
+        else if (newItem.toString() === "8"){
+          Util.Cell.form8(cellIndex); 
+        }
+        else if (newItem.toString() === "9"){
+          Util.Cell.form9(cellIndex); 
+        }
       }, 
       "clearAll": () => {
+        //Clear all of the pixel
         for(let i in $("div.individualCell").length){
-          
+          $("div.individualCell").attr("individualPixel"); 
         }
       }
     }, 
@@ -145,8 +175,17 @@ $(document).ready(() => {
       "listDetails": () => {
           return Util.arr.join('');
       },
-      "removeFromDetails": () => {
-  
+      "clearDetails": () => {
+          do {
+            Util.arr.pop()
+          } 
+          while (Util.arr.length > 0); 
+      }, 
+      "clearDetailsAt": (...arrIndex) => {
+        for (let i = 0; i < arrIndex.length; ++i){
+          map.remove(i); 
+        }
+        
       }, 
       "displayUtil": () => {
         return Util.map; 
@@ -159,6 +198,10 @@ $(document).ready(() => {
       }
     }, 
     "Pointer": {
+      //Return to the start of the input string
+      "toDefault": () => {
+        return 0; 
+      }, 
       "forward": (cellID) => {
         return cellID + 1; 
       }, 
@@ -170,6 +213,8 @@ $(document).ready(() => {
       }
     }
   } 
+
+  let VINDEX = 12; 
   //Create the relevant event listeners
   //console.log($("div#keyPad").children().eq(2).children().eq(2).html())
   /*
@@ -180,13 +225,9 @@ $(document).ready(() => {
       if ($("div.numKey").eq(key).html() === "1") {
         //Check if the cell is vacant within the thing (Start with the cell on the extreme right)
         console.log("The user has pressed on 1");
-        Util.Log.details($("div.numKey").eq(key).html()); //Calculation string 
-        for (let i = 0; i < $("div.individualCell").length; ++i){
-          //Check for the target key within the map and see if the cell is occupied 
-          Util.Log.displayUtil().forEach(key => {
-            
-          }); 
-        }
+        Util.Log.details($("div.numKey").eq(key).html()); //Set calculation string to be displayed to the user
+        Util.Log.addToDisplayUtil(Util.Pointer.getCurrentPosition(), $("div.numKey").eq(key).html()); //map cell to the corresponding number
+        
       }
       if ($("div.numKey").eq(key).html() === "2") {
         //Check if the cell is vacant within the display screen
